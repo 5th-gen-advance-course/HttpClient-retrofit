@@ -2,6 +2,7 @@ package com.example.ratha.httpclientdemo.repository;
 
 import com.example.ratha.httpclientdemo.entity.BaseEntity;
 import com.example.ratha.httpclientdemo.entity.CategoryByIdResponse;
+import com.example.ratha.httpclientdemo.entity.CategoryCreateResponseObservable;
 import com.example.ratha.httpclientdemo.entity.CategoryPost;
 import com.example.ratha.httpclientdemo.entity.CategoryPostResponse;
 import com.example.ratha.httpclientdemo.entity.CategoryResponse;
@@ -41,7 +42,7 @@ public interface Knongdai {
         Call<CategoryPostResponse> createCategory(@Body CategoryPost category);
 
         @POST("/api/v1/categories/create-main")
-        Single<Response<CategoryPostResponse>> createCategoryObservable(@Body CategoryPost category);
+        Observable<Response<CategoryCreateResponseObservable>> createCategoryObservable(@Body CategoryPost category);
 
         @PUT("/api/v1/categories/update-main")
         Call<CategoryUpdate> updateCategory(@Body CategoryPost category);

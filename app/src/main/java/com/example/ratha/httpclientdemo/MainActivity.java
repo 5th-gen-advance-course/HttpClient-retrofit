@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.example.ratha.httpclientdemo.entity.Category;
 import com.example.ratha.httpclientdemo.entity.CategoryByIdResponse;
+import com.example.ratha.httpclientdemo.entity.CategoryCreateResponseObservable;
 import com.example.ratha.httpclientdemo.entity.CategoryPost;
 import com.example.ratha.httpclientdemo.entity.CategoryPostResponse;
 import com.example.ratha.httpclientdemo.entity.CategoryResponse;
@@ -225,27 +226,33 @@ public class MainActivity extends AppCompatActivity {
     public void onCreateCatObservable(View view) {
 
         CategoryPost category=new CategoryPost();
-        category.setCate_name("test 27");
+        category.setCate_name("test 31");
         category.setDes("test2 test2 test2");
         List<String> keywords=new ArrayList<>();
         keywords.add("test2");
         keywords.add("test2-test2");
         category.setKeywords(keywords);
 
-        Single<Response<CategoryPostResponse>> postResponse=categoryServiceRx.createCategoryObservable(category);
+        Observable<Response<CategoryCreateResponseObservable>> postResponse=categoryServiceRx.createCategoryObservable(category);
         postResponse.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<Response<CategoryPostResponse>>() {
+                .subscribeWith(new DisposableObserver<Response<CategoryCreateResponseObservable>>() {
                     @Override
-                    public void onSuccess(Response<CategoryPostResponse> categoryPostResponseResponse) {
-                        Log.e("sms-> ", categoryPostResponseResponse.body().getSmg());
+                    public void onNext(Response<CategoryCreateResponseObservable> categoryPostResponseResponse) {
+                        Log.e("message->",categoryPostResponseResponse.body().getSmg());
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         Log.e("error->",e.toString());
                     }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
                 });
+
         postResponse.unsubscribeOn(Schedulers.io());
     }
 }
