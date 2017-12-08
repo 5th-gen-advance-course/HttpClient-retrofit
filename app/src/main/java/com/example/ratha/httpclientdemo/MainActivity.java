@@ -24,7 +24,6 @@ import java.util.List;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -179,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onUpdateCategory(View view) {
         CategoryPost category=new CategoryPost();
-        category.setId(202);
+        category.setId(246);
         category.setCate_name("test 11 update 3");
 
         updateCategory(category);
@@ -254,5 +253,62 @@ public class MainActivity extends AppCompatActivity {
                 });
 
         postResponse.unsubscribeOn(Schedulers.io());
+    }
+
+
+    public void onUpdateCatObservable(View view) {
+       CategoryPost category=new CategoryPost();
+       category.setId(248);
+       category.setCate_name("update observable 25");
+       category.setDes("in this year is the relaxing year that i have ever met before.");
+
+        updateCategoryObservable(category);
+    }
+
+    private void updateCategoryObservable(CategoryPost category) {
+
+        Observable<Response<CategoryUpdate>> updateObservable=categoryServiceRx.editCategoryObservable(category);
+
+        updateObservable.subscribeOn(Schedulers.io())
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<Response<CategoryUpdate>>() {
+                    @Override
+                    public void onNext(Response<CategoryUpdate> categoryUpdateResponse) {
+                        Log.e("sms->", categoryUpdateResponse.body().getMsg());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("ERROR->", e.toString());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.e("complete->", "completed");
+                    }
+                });
+
+    }
+
+    public void onDeleteCatObservable(View view) {
+        deleteCategoryOvservable(209);
+    }
+
+    private void deleteCategoryOvservable(int i) {
+        Single<Response<DeleteResponse>> deleteResponse =categoryServiceRx.removeCategory(i);
+        deleteResponse.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<Response<DeleteResponse>>() {
+                    @Override
+                    public void onSuccess(Response<DeleteResponse> deleteResponseResponse) {
+                        Log.e("sms->", deleteResponseResponse.body().getMsg());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                });
+
     }
 }

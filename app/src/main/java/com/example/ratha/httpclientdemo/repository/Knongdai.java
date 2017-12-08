@@ -37,7 +37,6 @@ public interface Knongdai {
         @GET("/api/v1/categories/{id}")
         Call<CategoryByIdResponse> getCategory(@Path("id") int id);
 
-
         @POST("/api/v1/categories/create-main")
         Call<CategoryPostResponse> createCategory(@Body CategoryPost category);
 
@@ -47,8 +46,14 @@ public interface Knongdai {
         @PUT("/api/v1/categories/update-main")
         Call<CategoryUpdate> updateCategory(@Body CategoryPost category);
 
+        @PUT("/api/v1/categories/update-main")
+        Observable<Response<CategoryUpdate>> editCategoryObservable(@Body CategoryPost category);
+
         @DELETE("/api/v1/categories/{id}/delete")
         Call<DeleteResponse> deleteCategory(@Path("id") int id);
+
+        @DELETE("/api/v1/categories/{id}/delete")
+        Single<Response<DeleteResponse>> removeCategory(@Path("id") int id);
 
 
     }
