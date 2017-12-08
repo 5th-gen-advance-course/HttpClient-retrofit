@@ -122,6 +122,11 @@ public class CategoryResponse {
         public String icon_name;
         public List<SubCategory> sub_cate;
 
+
+        public Category(){}
+        public Category(String title){
+            this.cate_name=title;
+        }
         public int getId() {
             return id;
         }

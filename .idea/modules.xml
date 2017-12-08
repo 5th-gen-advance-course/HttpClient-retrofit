@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HttpClient-retrofit.iml" filepath="$PROJECT_DIR$/HttpClient-retrofit.iml" />
+      <module fileurl="file://C:\Users\Asus\Documents\android app\RxAndroid\HttpClient-retrofit.iml" filepath="C:\Users\Asus\Documents\android app\RxAndroid\HttpClient-retrofit.iml" />
       <module fileurl="file://C:\Users\ratha\Documents\android app\RetrofitRxjava\HttpClient-retrofit.iml" filepath="C:\Users\ratha\Documents\android app\RetrofitRxjava\HttpClient-retrofit.iml" />
       <module fileurl="file://C:\Users\ratha\Documents\android app\HttpClient-retrofit\HttpClientDemo.iml" filepath="C:\Users\ratha\Documents\android app\HttpClient-retrofit\HttpClientDemo.iml" />
       <module fileurl="file://C:\Users\ratha\Documents\android app\HttpClient-retrofit\RetrofitRxjava.iml" filepath="C:\Users\ratha\Documents\android app\HttpClient-retrofit\RetrofitRxjava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RxAndroid.iml" filepath="$PROJECT_DIR$/RxAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Asus\Documents\android app\RxAndroid\app\app.iml" filepath="C:\Users\Asus\Documents\android app\RxAndroid\app\app.iml" />
       <module fileurl="file://C:\Users\ratha\Documents\android app\RetrofitRxjava\app\app.iml" filepath="C:\Users\ratha\Documents\android app\RetrofitRxjava\app\app.iml" />
     </modules>
   </component>

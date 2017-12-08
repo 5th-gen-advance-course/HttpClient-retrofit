@@ -13,7 +13,7 @@ public class CategoryCreate extends  BaseEntity{
     @SerializedName("id")
     public int id;
     @SerializedName("keywords")
-    public List<Keyword> keywords;
+    public List<String> keywords;
     @SerializedName("cate_name")
     public String cate_name;
     @SerializedName("des")
@@ -39,11 +39,11 @@ public class CategoryCreate extends  BaseEntity{
         this.status = status;
     }
 
-    public List<Keyword> getKeywords() {
+    public List<String> getKeywords() {
         return keywords;
     }
 
-    public void setKeywords(List<Keyword> keywords) {
+    public void setKeywords(List<String> keywords) {
         this.keywords = keywords;
     }
 
